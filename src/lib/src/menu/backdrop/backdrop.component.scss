@@ -1,0 +1,27 @@
+// Backdrop
+// --------------------------------------------------
+
+/// @prop - Color of the backdrop
+$backdrop-color: #000 !default;
+
+/// @prop - Z-Index of the backdrop
+$z-index-backdrop: 79 !default;
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $z-index-backdrop;
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: $backdrop-color;
+  opacity: .01;
+  transform: translateZ(0);
+
+  &.backdrop-no-tappable {
+    cursor: auto;
+  }
+}

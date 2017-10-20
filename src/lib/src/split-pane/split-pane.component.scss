@@ -1,0 +1,37 @@
+ion-split-pane {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+
+  &.split-pane-visible {
+
+    [menuToggle] {
+      display: none;
+    }
+
+    > ion-menu {
+      position: relative;
+      display: block;
+
+      min-width: 270px;
+
+      > .menu-inner {
+        right: 0;
+        left: 0;
+
+        width: auto;
+
+        box-shadow: none !important;
+        transform: none !important;
+      }
+
+      > .ion-backdrop {
+        display: hidden !important;
+      }
+    }
+  }
+}

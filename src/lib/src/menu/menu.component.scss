@@ -1,0 +1,119 @@
+// Menu
+// --------------------------------------------------
+
+/// @prop - Width of the menu
+$menu-width:           304px !default;
+
+/// @prop - Width of the menu on small devices (under 340px)
+$menu-small-width:     $menu-width - 40px !default;
+
+/// @prop - Z-Index of menu overlay
+$z-index-menu-overlay: 80 !default;
+
+
+:host {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: none;
+
+  contain: strict;
+
+  &.show-menu {
+    display: block;
+  }
+
+  &[side=right] > .menu-inner {
+    right: 0;
+    left: auto;
+  }
+
+  ion-backdrop {
+    z-index: -1;
+    display: none;
+
+    opacity: .01;
+  }
+
+
+  // Menu Reveal
+  // --------------------------------------------------
+  // The content slides over to reveal the menu underneath.
+  // The menu itself, which is under the content, does not move.
+
+  &[type=reveal] {
+    z-index: 0;
+  }
+
+  &[type=reveal].show-menu .menu-inner {
+    transform: translate3d(0, 0, 0);
+  }
+
+
+  // Menu Overlay
+  // --------------------------------------------------
+  // The menu slides over the content. The content
+  // itself, which is under the menu, does not move.
+
+  &[type=overlay] {
+    z-index: $z-index-menu-overlay;
+  }
+
+  &[type=overlay] .show-backdrop {
+    display: block;
+  }
+}
+
+
+.menu-inner {
+  position: absolute;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 0;
+
+  display: block;
+
+  width: $menu-width;
+  height: 100%;
+
+  transform: translate3d(-9999px, 0, 0);
+
+  contain: strict;
+
+  > ion-header,
+  > ion-content,
+  > ion-footer {
+    position: absolute;
+  }
+}
+
+.menu-content {
+  transform: translate3d(0, 0, 0);
+}
+
+.menu-content-open {
+  cursor: pointer;
+
+  touch-action: manipulation;
+
+  ion-pane,
+  ion-content,
+  .toolbar {
+    // the containing element itself should be clickable but
+    // everything inside of it should not clickable when menu is open
+    pointer-events: none;
+  }
+}
+
+
+@media (max-width: 340px) {
+
+  .menu-inner {
+    width: $menu-small-width;
+  }
+
+}
