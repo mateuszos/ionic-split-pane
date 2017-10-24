@@ -6,12 +6,14 @@ import { isTrueProperty, assert } from '../util/util';
 import { Config } from '../config/config';
 import { Platform } from '../platform/platform';
 
+// Breakpoints should have the same pixel values
+// as in other places (FlexLayout, SASS variables)
 const QUERY: { [key: string]: string }  = {
   xs: '(min-width: 0px)',
-  sm: '(min-width: 576px)',
-  md: '(min-width: 768px)',
-  lg: '(min-width: 992px)',
-  xl: '(min-width: 1200px)',
+  sm: '(min-width: 600px)',
+  md: '(min-width: 960px)',
+  lg: '(min-width: 1280px)',
+  xl: '(min-width: 1920px)',
   never: '',
 };
 
@@ -64,7 +66,7 @@ export abstract class RootNode {
  *
  *  ### Setting breakpoints
  *
- *  By default, SplitPane will expand when the screen is larger than 768px.
+ *  By default, SplitPane will expand when the screen is larger than 960px.
  *  If you want to customize this, use the `when` input. The `when` input can
  *  accept any valid media query, as it uses `matchMedia()` underneath.
  *
@@ -94,10 +96,10 @@ export abstract class RootNode {
  *  | Size | Value                 | Description                                                           |
  *  |------|-----------------------|-----------------------------------------------------------------------|
  *  | `xs` | `(min-width: 0px)`    | Show the split-pane when the min-width is 0px (meaning, always)       |
- *  | `sm` | `(min-width: 576px)`  | Show the split-pane when the min-width is 576px                       |
- *  | `md` | `(min-width: 768px)`  | Show the split-pane when the min-width is 768px (default break point) |
- *  | `lg` | `(min-width: 992px)`  | Show the split-pane when the min-width is 992px                       |
- *  | `xl` | `(min-width: 1200px)` | Show the split-pane when the min-width is 1200px                      |
+ *  | `sm` | `(min-width: 600px)`  | Show the split-pane when the min-width is 600px                       |
+ *  | `md` | `(min-width: 960px)`  | Show the split-pane when the min-width is 960px (default break point) |
+ *  | `lg` | `(min-width: 1280px)`  | Show the split-pane when the min-width is 1280px                       |
+ *  | `xl` | `(min-width: 1920px)` | Show the split-pane when the min-width is 1920px                      |
  *
  *  You can also pass in boolean values that will trigger SplitPane when the value
  *  or expression evaluates to true.
